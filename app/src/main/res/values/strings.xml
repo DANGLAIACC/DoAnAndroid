@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">DoAnAndroid</string>
+    <string name="img_decription">Img decription</string>
+
+
+    <string name="login.title">Login</string>
+    <string name="login.span">Access account</string>
+    <string name="login.more">or Login with your account</string>
+    <string name="login.username">Username</string>
+    <string name="login.password">Password</string>
+    <string name="login.signin">Sign in</string>
+    <string name="login.admin">admin</string>
+    <string name="login.noacc">Don&apos;t have account?</string>
+    <string name="login.register">Register</string>
+
+
+    <string name="home.search">Search dish or shop</string>
+    <string name="home.yourplace">Home</string>
+    <string name="home.all">All</string>
+    <string name="home.youraddress">02 street D5, Ho Chi Minh City</string>
+    <string name="home.nearest">Nearest Restaurant</string>
+    <string name="home.foodname">Westway</string>
+    <string name="home.ratestar">4.6</string>
+    <string name="home.time">15 min</string>
 </resources>

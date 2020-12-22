@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgray"
+    tools:context=".Home">
+
+    <ImageView
+        android:id="@+id/bgHeader"
+        style="@style/vector"
+        android:contentDescription="@string/img_decription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/vector_1" />
+
+    <ImageView
+        android:id="@+id/bgHeader2"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:contentDescription="@string/img_decription"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/vector_2" />
+
+    <EditText
+        android:id="@+id/txtSearch"
+        style="@style/login_edittext"
+        android:layout_marginBottom="55dp"
+        android:autofillHints="@string/home.search"
+        android:drawableStart="@drawable/ic_search"
+        android:hint="@string/home.search"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@id/bgHeader"
+        app:layout_constraintEnd_toEndOf="@id/bgHeader"
+        app:layout_constraintStart_toStartOf="@id/bgHeader"
+        app:layout_constraintTop_toTopOf="@id/bgHeader" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/img_decription"
+        android:src="@drawable/ic_place"
+        app:layout_constraintBottom_toBottomOf="@id/bgHeader"
+        app:layout_constraintStart_toStartOf="@id/txtSearch" />
+
+    <TextView
+        android:id="@+id/lblPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/home.yourplace"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@id/lblAddress"
+        app:layout_constraintStart_toStartOf="@+id/lblAddress"
+        app:layout_constraintTop_toTopOf="@id/imageView3" />
+
+    <TextView
+        android:id="@+id/lblAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/home.youraddress"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/imageView3"
+        app:layout_constraintEnd_toStartOf="@id/btnChangeAddress"
+        app:layout_constraintStart_toEndOf="@id/imageView3"
+        app:layout_constraintTop_toBottomOf="@id/imageView3" />
+
+    <android.widget.Button
+        android:id="@+id/btnChangeAddress"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="none"
+        android:drawableLeft="@drawable/ic_settings"
+        app:layout_constraintEnd_toEndOf="@id/txtSearch"
+        app:layout_constraintTop_toTopOf="@id/imageView3" />
+
+    <Button
+        android:id="@+id/btnAll"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded"
+        android:drawableLeft="@drawable/ic_fastfood"
+        android:gravity="center_vertical"
+        app:backgroundTint="null"
+        app:layout_constraintStart_toStartOf="@id/txtSearch"
+        app:layout_constraintTop_toBottomOf="@id/imageView3" />
+
+
+    <Button
+        android:id="@+id/btnAll"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded"
+        android:drawableLeft="@drawable/ic_fastfood"
+        android:gravity="center_vertical"
+        app:backgroundTint="null"
+        app:layout_constraintStart_toStartOf="@id/txtSearch"
+        app:layout_constraintTop_toBottomOf="@id/imageView3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
