@@ -22,4 +22,19 @@
     <string name="home.foodname">Westway</string>
     <string name="home.ratestar">4.6</string>
     <string name="home.time">15 min</string>
+
+    <string name="detail.article">Healthy eating means eating a variety of foods that give you the nutrients you need to maintain your health, feel good, and have energy.</string>
+    <string name="detail.shopMenu">Food Menu</string>
+    <string name="detail.btnBest">Best Seller</string>
+    <string name="detail.btnDrink">Drink</string>
+    <string name="detail.btnVeg">Veg</string>
+    <string name="detail.btnNonVeg">Non-Veg</string>
+    <string name="detail.allMenu">All menu</string>
+
+
+    <string name="dish.item.dishName">Vegitable Salad</string>
+    <string name="dish.item.dishPrice">123.000vnd</string>
+    <string name="dish.item.dishArtical">Doan van mo ta mon an</string>
+
+
 </resources>
