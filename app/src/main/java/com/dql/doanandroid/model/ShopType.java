@@ -16,8 +16,7 @@ public class ShopType {
     private int shopTypeId;
     private String shopTypeText;
 
-    public ShopType(int shopTypeId, String shopTypeText) {
-        this.shopTypeId = shopTypeId;
+    public ShopType(String shopTypeText) {
         this.shopTypeText = shopTypeText;
     }
 

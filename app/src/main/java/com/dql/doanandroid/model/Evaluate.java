@@ -1,8 +1,7 @@
 package com.dql.doanandroid.model;
 
 public class Evaluate {
-    public Evaluate(int evaId, int shopId, int evaRate, String usrUsr, String evaContent, String evaTitle, String evaTime, String evaImgs) {
-        this.evaId = evaId;
+    public Evaluate(int shopId, int evaRate, String usrUsr, String evaContent, String evaTitle, String evaTime, String evaImgs) {
         this.shopId = shopId;
         this.evaRate = evaRate;
         this.usrUsr = usrUsr;

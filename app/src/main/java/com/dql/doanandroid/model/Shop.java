@@ -1,6 +1,8 @@
 package com.dql.doanandroid.model;
 
 public class Shop {
+
+    // img tiền tố: https://images.foody.vn/res/
     public int getShopId() {
         return shopId;
     }
@@ -36,15 +38,17 @@ public class Shop {
         this.shopArticle = shopArticle;
     }
 
+    public String getShopImg(){return shopImg;}
+    public void setShopImg(String shopImg){this.shopImg = shopImg;}
     private int shopId, shopTypeId;
-    private String shopName, shopAddress, shopArticle;
+    private String shopName, shopAddress, shopArticle, shopImg;
 
-    public Shop(int shopId, int shopTypeId, String shopName, String shopAddress, String shopArticle) {
-        this.shopId = shopId;
+    public Shop(int shopTypeId, String shopName, String shopAddress, String shopArticle, String shopImg) {
         this.shopTypeId = shopTypeId;
         this.shopName = shopName;
         this.shopAddress = shopAddress;
         this.shopArticle = shopArticle;
+        this.shopImg = shopImg;
     }
 }
 /*
