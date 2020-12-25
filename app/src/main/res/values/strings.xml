@@ -10,7 +10,7 @@
     <string name="login.password">Password</string>
     <string name="login.signin">Sign in</string>
     <string name="login.admin">admin</string>
-    <string name="login.noacc">Don&apos;t have account?</string>
+    <string name="login.noacc">Do not have account?</string>
     <string name="login.register">Register</string>
 
 
