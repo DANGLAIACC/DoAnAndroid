@@ -56,8 +56,7 @@ public class Dish {
     private int dishId, shopId, dishTypeId, dishPrice;
     private String dishName, dishImg, dishArticle;
 
-    public Dish(int dishId, int shopId, int dishTypeId, String dishName, String dishImg, int dishPrice, String dishArticle) {
-        this.dishId = dishId;
+    public Dish(int shopId, int dishTypeId, String dishName, String dishImg, int dishPrice, String dishArticle) { 
         this.shopId = shopId;
         this.dishTypeId = dishTypeId;
         this.dishName = dishName;

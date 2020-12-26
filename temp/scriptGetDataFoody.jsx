@@ -1,19 +1,41 @@
+function setShopId(i) {
+  localStorage.setItem("shopId", i);
+}
+function checkNull(obj, describe){
+  if(obj==null){
+    
+  }
+}
+function copyToClipboard(str) {
+  var el = document.createElement("textarea");
+  el.value = str;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand("copy");
+  document.body.removeChild(el);
+}
 function getShop() {
   var shopName = document.querySelector(
     "section > div > div > div > div:nth-child(4) > div > div.micro-header > div.main-information.disableSection > div > div > div.main-info-title > h1"
-  ).innerText;
+  );
+  if(shopName==null)
+    console.warn("shopName null");
   var shopAddress = document.querySelector(
     "section > div > div > div > div:nth-child(4) > div > div.micro-header > div.main-information.disableSection > div > div > div.disableSection > div:nth-child(1) > div"
-  ).innerText;
+  );
+  if (shopAddress == null) console.warn("shopaddress null");
 
   var shopImg = document
     .querySelector(
       "section > div > div > div > div:nth-child(4) > div > div.micro-header > div.main-image > div > a > img"
-    )
-    .src.substr(28);
+    );
 
-  var resultShop = `lstShop.add(new Shop(shopTypeId, "${shopName}", "${shopAddress}","", "${shopImg}"));\n`;
+  if (shopImg == null) console.warn("shopimg null");
 
+  var resultShop = `lstShop.add(new Shop(shopTypeId, "${
+    shopName.innerText
+  }", "${shopAddress.innerText}","", "${shopImg.src.substr(28)}"));\n`;
+  var shopId = +localStorage.getItem("shopId");
   var arrUsername = [
     "admin",
     "vtluan",
@@ -49,10 +71,11 @@ function getShop() {
     ).innerText;
     var evaTitle = arrEvaluate[i].querySelector(".rd-title").innerText;
     var evaContent = arrEvaluate[i].querySelector(".rd-des span").innerText;
-    var evaRate = Math.ceil(
-      arrEvaluate[i].querySelector("div.review-points.ng-scope.green > span")
-        .innerText
-    )-5;
+    var evaRate =
+      Math.ceil(
+        arrEvaluate[i].querySelector("div.review-points.ng-scope.green > span")
+          .innerText
+      ) - 5;
 
     var evaImgsTemp = arrEvaluate[i].querySelectorAll("li> a > img");
     var evaImgs = "";
@@ -60,9 +83,10 @@ function getShop() {
       evaImgs += i.src.substr(28) + ";";
     });
 
-    resultEvaluate += `lstEvaluate.add(new Evaluate(shopId,${evaRate},"${arrUsername[i]}","${evaContent}","${evaTitle}","${evaTime}","${evaImgs}"));`;
+    resultEvaluate += `lstEvaluate.add(new Evaluate(${shopId},${evaRate},"${arrUsername[i]}","${evaContent}","${evaTitle}","${evaTime}","${evaImgs}"));`;
   }
 
-  console.warn(resultShop);
-  console.warn(resultEvaluate);
+  copyToClipboard(resultShop);
+  copyToClipboard(resultEvaluate);
+  setShopId(shopId++);
 }
