@@ -2,6 +2,7 @@ package com.dql.doanandroid.model;
 
 public class DishType {
     public DishType(String dishTypeText) {
+        dishTypeId = 0;
         this.dishTypeText = dishTypeText;
     }
 

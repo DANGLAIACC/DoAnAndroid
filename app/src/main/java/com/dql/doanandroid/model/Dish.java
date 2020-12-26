@@ -2,7 +2,8 @@ package com.dql.doanandroid.model;
 
 public class Dish {
 
-    public Dish(int shopId, int dishTypeId, String dishName, String dishImg, int dishPrice, String dishArticle) { 
+    public Dish(int shopId, int dishTypeId, String dishName, String dishImg, int dishPrice, String dishArticle) {
+        dishId = 0;
         this.shopId = shopId;
         this.dishTypeId = dishTypeId;
         this.dishName = dishName;
@@ -67,13 +68,13 @@ public class Dish {
 }
 /**
 
- private static final String DISHID = "dishId";
- private static final String SHOPID = "shopId";
- private static final String DISHTYPEID = "dishTypeId";
- private static final String DISHNAME = "dishName";
- private static final String DISHIMG = "dishImg";
- private static final String DISHPRICE = "dishPrice";
- private static final String DISHARTICLE = "dishArticle";
+
+ content.put("shopId",getShopId());
+ content.put("dishTypeId",getDishTypeId());
+ content.put("dishName",getDishName());
+ content.put("dishImg",getDishImg());
+ content.put("dishPrice",getDishPrice());
+ content.put("dishArticle",getDishArticle());
 
 
  */

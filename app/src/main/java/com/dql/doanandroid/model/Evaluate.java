@@ -2,6 +2,7 @@ package com.dql.doanandroid.model;
 
 public class Evaluate {
     public Evaluate(int shopId, int evaRate, String usrUsr, String evaContent, String evaTitle, String evaTime, String evaImgs) {
+        evaId = 0;
         this.shopId = shopId;
         this.evaRate = evaRate;
         this.usrUsr = usrUsr;
@@ -82,12 +83,11 @@ public class Evaluate {
     }
 }
 /*
-        private static final String SHOPID = "shopId";
-        private static final String EVARATE = "evaRate";
-        private static final String USRUSR = "usrUsr";
-        private static final String EVACONTENT = "evaContent";
-        private static final String EVATITLE = "evaTitle";
-        private static final String EVATIME = "evaTime";
-        private static final String EVAIMGS = "evaImgs";
-
+        content.put("shopId", i.getShopId());
+        content.put("evaRate", i.getEvaRate());
+        content.put("usrUsr", i.getEsrUsr());
+        content.put("evaContent", i.getEvaContent());
+        content.put("evaTitle", i.getEvaTitle());
+        content.put("evaTime", i.getEvaTime());
+        content.put("evaImgs", i.getEvaImgs());
  */

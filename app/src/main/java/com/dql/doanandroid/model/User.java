@@ -52,3 +52,11 @@ public class User {
         this.usrGender = usrGender;
     }
 }
+/*
+
+    content.put("usrUsr",i.getUsrUsr());
+    content.put("usrPwd",i.getUsrPwd());
+    content.put("usrName",i.getUsrName());
+    content.put("usrAddress",i.getUsrAddress());
+    content.put("usrGender",i.getUsrGender());
+* */
