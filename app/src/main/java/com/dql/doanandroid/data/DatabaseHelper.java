@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "SearchFood";
-    private static final int VERSION = 3;
+    private static final int VERSION = 1;
     private Context context;
 
     private final String TABLE_USER = "user";
@@ -45,6 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private final String SHOPNAME = "shopName";
     private final String SHOPADDRESS = "shopAddress";
     private final String SHOPARTICLE = "shopArticle";
+    private final String SHOPIMG = "shopImg";
 
     private final String SHOPTYPETEXT = "shopTypeText";
 
@@ -63,6 +64,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + SHOPNAME + " text not null,"
             + SHOPADDRESS + " text,"
             + SHOPARTICLE + " text,"
+            + SHOPIMG + " text,"
             + SHOPTYPEID + " INTEGER);";
     final String qryCreateTblDishType = "CREATE TABLE " + TABLE_DISHTYPE + " ("
             + DISHTYPEID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -96,130 +98,113 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 //        db = this.getWritableDatabase();
+        db.execSQL(qryCreateTblDishType);
+        db.execSQL(qryCreateTblShopType);
+        db.execSQL(qryCreateTblShop);
+        db.execSQL(qryCreateTblDish);
+        db.execSQL(qryCreateTblUser);
+        db.execSQL(qryCreateTblEvaluate);
+
+        addUser(db);
+        addShopType(db);
+        addShop(db);
+        addDishType(db);
+        addDish(db);
+        addEvaluate(db);
+    }
+
+    public void addUser(SQLiteDatabase db) {
+        try {
+            exampleData.lstUser.forEach(i -> {
+                ContentValues content = new ContentValues();
+
+                content.put(USRUSR, i.getUsrUsr());
+                content.put(USRPWD, i.getUsrPwd());
+                content.put(USRNAME, i.getUsrName());
+                content.put(USRADDRESS, i.getUsrAddress());
+                content.put(USRGENDER, i.getUsrGender());
+
+                db.insert(TABLE_USER, null, content);
+            });
+        } catch (Exception ex) {
+            System.err.println("line DatabaseHelper.java:129 - ex.getMessage() :" + ex.getMessage());
+        }
+    }
+
+    public void addShopType(SQLiteDatabase db) {
+        try {
+            exampleData.lstShopType.forEach(i -> {
+                ContentValues content = new ContentValues();
+                content.put(SHOPTYPETEXT, i.getShopTypeText());
+                db.insert(TABLE_SHOPTYPE, null, content);
+            });
+        } catch (Exception ex) {
+            System.err.println("line DatabaseHelper.java:140 - ex.getMessage() :" + ex.getMessage());
+        }
+    }
+
+    public void addShop(SQLiteDatabase db) {
+        try {
+            exampleData.lstShop.forEach(i -> {
+                ContentValues content = new ContentValues();
+                content.put(SHOPTYPEID, i.getShopTypeId());
+                content.put(SHOPNAME, i.getShopName());
+                content.put(SHOPADDRESS, i.getShopAddress());
+                content.put(SHOPARTICLE, i.getShopArticle());
+                content.put(SHOPIMG , i.getShopImg());
+                db.insert(TABLE_SHOP, null, content);
+            });
+        } catch (Exception ex) {
+            System.err.println("line DatabaseHelper.java:154 - ex.getMessage() :" + ex.getMessage());
+        }
+    }
+
+    public void addDishType(SQLiteDatabase db) {
         try {
 
-            db.execSQL(qryCreateTblDishType);
-            db.execSQL(qryCreateTblShopType);
-            db.execSQL(qryCreateTblShop);
-            db.execSQL(qryCreateTblDish);
-            db.execSQL(qryCreateTblUser);
-            db.execSQL(qryCreateTblEvaluate);
-
-        } catch (Exception e) {
-            System.err.println("line DatabaseHelper.java:107 - exampleData.getMessage() :" + e.getMessage());
-        }
-
-        addUser();
-        addShopType();
-        addShop();
-        addDishType();
-        addDish();
-        addEvaluate();
-    }
-
-    public void addUser() {
-        ContentValues content = new ContentValues();
-        SQLiteDatabase db = getReadableDatabase();
-        exampleData.lstUser.forEach(i -> {
-            content.put("usrUsr", i.getUsrUsr());
-            content.put("usrPwd", i.getUsrPwd());
-            content.put("usrName", i.getUsrName());
-            content.put("usrAddress", i.getUsrAddress());
-            content.put("usrGender", i.getUsrGender());
-
-            try {
-                db.insert(TABLE_USER, null, content);
-            } catch (Exception ex) {
-                System.err.println("line DatabaseHelper.java:129 - ex.getMessage() :" + ex.getMessage());
-            }
-        });
-    }
-
-    public void addShopType() {
-        ContentValues content = new ContentValues();
-        SQLiteDatabase db = getReadableDatabase();
-        exampleData.lstShopType.forEach(i -> {
-            content.put("shopTypeText", i.getShopTypeText());
-            try {
-                db.insert(TABLE_SHOPTYPE, null, content);
-            } catch (Exception ex) {
-                System.err.println("line DatabaseHelper.java:140 - ex.getMessage() :" + ex.getMessage());
-            }
-        });
-    }
-
-    public void addShop() {
-        ContentValues content = new ContentValues();
-        SQLiteDatabase db = getReadableDatabase();
-
-        exampleData.lstShop.forEach(i -> {
-            content.put("shopTypeId", i.getShopTypeId());
-            content.put("shopName", i.getShopName());
-            content.put("shopAddress", i.getShopAddress());
-            content.put("shopArticle", i.getShopArticle());
-            content.put("shopImg", i.getShopImg());
-
-            try {
-                db.insert(TABLE_SHOP, null, content);
-            } catch (Exception ex) {
-                System.err.println("line DatabaseHelper.java:154 - ex.getMessage() :" + ex.getMessage());
-            }
-        });
-    }
-
-    public void addDishType() {
-        ContentValues content = new ContentValues();
-        SQLiteDatabase db = getReadableDatabase();
-
-        exampleData.lstDishType.forEach(i -> {
-            content.put("dishTypeText", i.getDishTypeText());
-            try {
+            exampleData.lstDishType.forEach(i -> {
+                ContentValues content = new ContentValues();
+                content.put(DISHTYPETEXT, i.getDishTypeText());
                 db.insert(TABLE_DISHTYPE, null, content);
-            } catch (Exception ex) {
-                Toast.makeText(context, "Thêm Shop thất bại: " + ex.toString(), Toast.LENGTH_SHORT).show();
-                System.err.println("line DatabaseHelper.java:154 - ex.getMessage() :" + ex.getMessage());
-            }
-        });
+            });
+        } catch (Exception ex) {
+            System.err.println("line DatabaseHelper.java:154 - ex.getMessage() :" + ex.getMessage());
+        }
     }
 
-    public void addDish() {
-        ContentValues content = new ContentValues();
-        SQLiteDatabase db = getReadableDatabase();
-        exampleData.lstDish.forEach(i -> {
-            content.put("shopId", i.getShopId());
-            content.put("dishTypeId", i.getDishTypeId());
-            content.put("dishName", i.getDishName());
-            content.put("dishImg", i.getDishImg());
-            content.put("dishPrice", i.getDishPrice());
-            content.put("dishArticle", i.getDishArticle());
-            try {
+    public void addDish(SQLiteDatabase db) {
+        try {
+            exampleData.lstDish.forEach(i -> {
+                ContentValues content = new ContentValues();
+                content.put(SHOPID, i.getShopId());
+                content.put(DISHTYPEID, i.getDishTypeId());
+                content.put(DISHNAME, i.getDishName());
+                content.put(DISHIMG, i.getDishImg());
+                content.put(DISHPRICE, i.getDishPrice());
+                content.put(DISHARTICLE, i.getDishArticle());
                 db.insert(TABLE_DISH, null, content);
-            } catch (Exception ex) {
-                System.err.println("line DatabaseHelper.java:177 - ex.getMessage() :" + ex.getMessage());
-            }
-        });
+            });
+        } catch (Exception ex) {
+            System.err.println("line DatabaseHelper.java:177 - ex.getMessage() :" + ex.getMessage());
+        }
     }
 
-    public void addEvaluate() {
-        ContentValues content = new ContentValues();
-        SQLiteDatabase db = getReadableDatabase();
-
-        exampleData.lstEvaluate.forEach(i -> {
-
-            content.put("shopId", i.getShopId());
-            content.put("evaRate", i.getEvaRate());
-            content.put("usrUsr", i.getUsrUsr());
-            content.put("evaContent", i.getEvaContent());
-            content.put("evaTitle", i.getEvaTitle());
-            content.put("evaTime", i.getEvaTime());
-            content.put("evaImgs", i.getEvaImgs());
-
-            try {
+    public void addEvaluate(SQLiteDatabase db) {
+        try {
+            exampleData.lstEvaluate.forEach(i -> {
+                ContentValues content = new ContentValues();
+                content.put(SHOPID, i.getShopId());
+                content.put(EVARATE, i.getEvaRate());
+                content.put(USRUSR, i.getUsrUsr());
+                content.put(EVACONTENT, i.getEvaContent());
+                content.put(EVATITLE, i.getEvaTitle());
+                content.put(EVATIME, i.getEvaTime());
+                content.put(EVAIMGS, i.getEvaImgs());
                 db.insert(TABLE_EVALUATE, null, content);
-            } catch (Exception ex) {
-                System.err.println("line DatabaseHelper.java:194 - ex.getMessage() :" + ex.getMessage());
-            }
-        });
+            });
+        } catch (Exception ex) {
+            System.err.println("line DatabaseHelper.java:194 - ex.getMessage() :" + ex.getMessage());
+        }
     }
 
     @Override

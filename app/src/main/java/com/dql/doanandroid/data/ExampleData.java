@@ -174,16 +174,16 @@ public class ExampleData {
         lstEvaluate.add(new Evaluate(7, 3, "tmduc", "Order 4 món dc mỗi gà nướng và sốt ngon", "Cocorico - Gà Nướng Pháp Rotisserie -***", "28/11/2019 21:58", "g5/44053/s800/foody-cocorico-ga-nuong-phap-rotisserie-dien-bien-phu-224-637105751264698579.jpg;"));
         lstEvaluate.add(new Evaluate(7, 5, "ntnho", "Gà ngon lắm nha, không bở, không dai, đậm vị nha.\nSườn non mềm, thấm.\nNước chắm vs sốt ớt rất đặc biệt nha\nKhông gian siêu xinh !!!!", "Quán đẹp - đồ ăn siêu siêu ngon", "28/11/2019 21:31", "g5/44053/s400x400/foody-cocorico-ga-nuong-phap-rotisserie-dien-bien-phu-479-637105735093146737.jpg;g5/44053/s400x400/foody-cocorico-ga-nuong-phap-rotisserie-dien-bien-phu-711-637105735090177742.jpg;"));
         lstEvaluate.add(new Evaluate(7, 3, "nquyen", "Nchug ok, lần mình đi 14h cả quán có mỗi bàn mình. Đói ăn thấy ngon, nếu để gọi là no thì nên kêu thêm side dish. Đồ chua rất đã. Có điều khuyên là nên ghé đúng bữa (khi vắng có thể ra đồ ăn bị lâu vì phải restart bếp cái này quán nướng nào mình đi cũng thế thui). Well có vẻ thân thiện nên mình ko xét nét chuyện giá cả vs chất lượng. Menu dễ nhìn và nhiều thứ để chọn.", "Review sau 2 tháng (mới lục lại hình)", "26/8/2019 0:35", "g5/44053/s800/foody-cocorico-ga-nuong-phap-rotisserie-dien-bien-phu-775-637023765103027815.jpg;"));
-        lstDish.add(new Dish(5, 1, "1/2 gà Cocorico", "g5/44053/s750x750/2017121912415-1x1-gaccrc.jpg", 159000, "Đoạn văn mô tả sản phẩm 1/2 gà Cocorico"));
-        lstDish.add(new Dish(5, 1, "1/2 heo Porchetta", "g5/44053/s750x750/2017121912430-1x1-porchetta.jpg", 182000, "Đoạn văn mô tả sản phẩm 1/2 heo Porchetta"));
-        lstDish.add(new Dish(5, 1, "1/2 sườn cây BBQ", "g5/44053/s750x750/2017121912443-1x1-suonbbq.jpg", 193000, "Đoạn văn mô tả sản phẩm 1/2 sườn cây BBQ"));
-        lstDish.add(new Dish(5, 1, "1/2 gà Cajun", "g5/44053/s750x750/2017121912356-1x1-gacajun.jpg", 149000, "Đoạn văn mô tả sản phẩm 1/2 gà Cajun"));
-        lstDish.add(new Dish(5, 1, "1/2 gà Jalapeno", "g5/44053/s750x750/2017121912317-1x1-gacajun.jpg", 149000, "Đoạn văn mô tả sản phẩm 1/2 gà Jalapeno"));
-        lstDish.add(new Dish(5, 1, "1 gà nướng Cocorico", "g5/44053/s750x750/20171219115422-1x1-gaccrc.jpg", 285000, "Đoạn văn mô tả sản phẩm 1 gà nướng Cocorico"));
-        lstDish.add(new Dish(5, 1, "1 gà nướng Cajun", "g5/44053/s750x750/20171219115953-1x1-gacajun.jpg", 275000, "Đoạn văn mô tả sản phẩm 1 gà nướng Cajun"));
-        lstDish.add(new Dish(5, 1, "1 sườn cây BBQ", "g5/44053/s750x750/20171219115921-1x1-suonbbq.jpg", 351000, "Đoạn văn mô tả sản phẩm 1 sườn cây BBQ"));
-        lstDish.add(new Dish(5, 1, "1 heo Porchetta", "g5/44053/s750x750/20171219115658-1x1-porchetta.jpg", 341000, "Đoạn văn mô tả sản phẩm 1 heo Porchetta"));
-        lstDish.add(new Dish(5, 1, "1 gà Jalapeno", "g5/44053/s750x750/2017121912244-1x1-gacajun.jpg", 275000, "Đoạn văn mô tả sản phẩm 1 gà Jalapeno"));
+        lstDish.add(new Dish(7, 1, "1/2 gà Cocorico", "g5/44053/s750x750/2017121912415-1x1-gaccrc.jpg", 159000, "Đoạn văn mô tả sản phẩm 1/2 gà Cocorico"));
+        lstDish.add(new Dish(7, 1, "1/2 heo Porchetta", "g5/44053/s750x750/2017121912430-1x1-porchetta.jpg", 182000, "Đoạn văn mô tả sản phẩm 1/2 heo Porchetta"));
+        lstDish.add(new Dish(7, 1, "1/2 sườn cây BBQ", "g5/44053/s750x750/2017121912443-1x1-suonbbq.jpg", 193000, "Đoạn văn mô tả sản phẩm 1/2 sườn cây BBQ"));
+        lstDish.add(new Dish(7, 1, "1/2 gà Cajun", "g5/44053/s750x750/2017121912356-1x1-gacajun.jpg", 149000, "Đoạn văn mô tả sản phẩm 1/2 gà Cajun"));
+        lstDish.add(new Dish(7, 1, "1/2 gà Jalapeno", "g5/44053/s750x750/2017121912317-1x1-gacajun.jpg", 149000, "Đoạn văn mô tả sản phẩm 1/2 gà Jalapeno"));
+        lstDish.add(new Dish(7, 1, "1 gà nướng Cocorico", "g5/44053/s750x750/20171219115422-1x1-gaccrc.jpg", 285000, "Đoạn văn mô tả sản phẩm 1 gà nướng Cocorico"));
+        lstDish.add(new Dish(7, 1, "1 gà nướng Cajun", "g5/44053/s750x750/20171219115953-1x1-gacajun.jpg", 275000, "Đoạn văn mô tả sản phẩm 1 gà nướng Cajun"));
+        lstDish.add(new Dish(7, 1, "1 sườn cây BBQ", "g5/44053/s750x750/20171219115921-1x1-suonbbq.jpg", 351000, "Đoạn văn mô tả sản phẩm 1 sườn cây BBQ"));
+        lstDish.add(new Dish(7, 1, "1 heo Porchetta", "g5/44053/s750x750/20171219115658-1x1-porchetta.jpg", 341000, "Đoạn văn mô tả sản phẩm 1 heo Porchetta"));
+        lstDish.add(new Dish(7, 1, "1 gà Jalapeno", "g5/44053/s750x750/2017121912244-1x1-gacajun.jpg", 275000, "Đoạn văn mô tả sản phẩm 1 gà Jalapeno"));
 
     }
 }
