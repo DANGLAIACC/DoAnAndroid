@@ -10,51 +10,49 @@ import android.widget.TextView;
 
 import com.dql.doanandroid.R;
 import com.dql.doanandroid.global.GetImageFromUrl;
-import com.dql.doanandroid.model.Shop;
+import com.dql.doanandroid.model.Dish;
 
 import java.util.List;
 
-public class ShopAdapter extends ArrayAdapter<Shop> {
+public class DishAdapter extends ArrayAdapter<Dish> {
 
     private Context context;
     private int resource;
-    private List<Shop> lstShop;
+    private List<Dish> lstDish;
 
-    public ShopAdapter(Context context, int resource, List<Shop> lstShop) {
-        super(context, resource, lstShop);
+    public DishAdapter(Context context, int resource, List<Dish> lstDish) {
+        super(context, resource, lstDish);
         this.context = context;
         this.resource = resource;
-        this.lstShop = lstShop;
-//        System.err.println("line ShopAdapter.java:26 - lstShop.size(): " + lstShop.size());
+        this.lstDish = lstDish;
+//        System.err.println("line DishAdapter.java:26 - lstDish.size(): " + lstDish.size());
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
+        DishAdapter.ViewHolder viewHolder;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.shop_item, parent, false);
-            viewHolder = new ViewHolder();
+            viewHolder = new DishAdapter.ViewHolder();
             viewHolder.dishImgContent = convertView.findViewById(R.id.dishImgContent);
             viewHolder.dishName = convertView.findViewById(R.id.dishName);
             viewHolder.dishPrice = convertView.findViewById(R.id.dishPrice);
             viewHolder.dishArticle = convertView.findViewById(R.id.dishArtical);
             convertView.setTag(viewHolder);
         } else {
-            viewHolder = (ViewHolder) convertView.getTag();
+            viewHolder = (DishAdapter.ViewHolder) convertView.getTag();
         }
-        Shop s = lstShop.get(position);
-        viewHolder.dishName.setText(s.getShopName());
-        viewHolder.dishPrice.setText(s.getShopAddress());
-        viewHolder.dishArticle.setText(s.getShopArticle());
+        Dish s = lstDish.get(position);
+        viewHolder.dishName.setText(s.getDishName());
+        viewHolder.dishPrice.setText(s.getDishPrice());
+        viewHolder.dishArticle.setText(s.getDishArticle());
         new GetImageFromUrl(viewHolder.dishImgContent)
-                .execute("https://images.foody.vn/res/"+s.getShopImg());
+                .execute("https://images.foody.vn/res/"+s.getDishImg());
 
-//        return super.getView(position, convertView,parent);
         return convertView;
     }
     public class ViewHolder {
         private ImageView dishImgContent;
         private TextView dishName, dishPrice, dishArticle;
-
     }
 }

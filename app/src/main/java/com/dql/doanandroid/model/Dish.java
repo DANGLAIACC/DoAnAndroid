@@ -2,8 +2,8 @@ package com.dql.doanandroid.model;
 
 public class Dish {
 
-    public Dish(int shopId, int dishTypeId, String dishName, String dishImg, int dishPrice, String dishArticle) {
-        dishId = 0;
+    public Dish(int dishId, int shopId, int dishTypeId, String dishName, String dishImg, int dishPrice, String dishArticle) {
+        this.dishId = dishId;
         this.shopId = shopId;
         this.dishTypeId = dishTypeId;
         this.dishName = dishName;

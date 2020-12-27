@@ -32,7 +32,6 @@ public class Search extends AppCompatActivity {
         lstShop = db.getAllShop();
         setAdapter();
         addEvent();
-
     }
 
     private void addEvent() {
@@ -42,12 +41,11 @@ public class Search extends AppCompatActivity {
 
                 Shop item = (Shop) parent.getItemAtPosition(position);
                 Intent intent = new Intent(getBaseContext(), Detail.class);
-                intent.putExtra("shopId", item.getShopId()+"");
+                intent.putExtra("shopId", item.getShopId() + "");
                 startActivity(intent);
             }
         });
     }
-
 
     private void getViewById() {
         lvSearchResult = findViewById(R.id.lvSearchResult);
@@ -55,7 +53,7 @@ public class Search extends AppCompatActivity {
 
     private void setAdapter() {
         if (shopAdapter == null) {
-            shopAdapter = new ShopAdapter(this, R.layout.dish_item, lstShop);
+            shopAdapter = new ShopAdapter(this, R.layout.shop_item, lstShop);
         }
         lvSearchResult.setAdapter(shopAdapter);
     }

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import com.dql.doanandroid.model.Dish;
 import com.dql.doanandroid.model.Shop;
 
 import java.util.ArrayList;
@@ -270,6 +271,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else{
             Toast.makeText(context, "Không tồn tại shopId = "+id, Toast.LENGTH_SHORT).show();
         }
-        return new Shop(-1, "", "", "", "");
+        return new Shop(-1,-1, "", "", "", "");
+    }
+
+    /**
+     * Lấy 1 số món ăn trong shop
+     * @param shopId
+     * @param number ko lớn hơn 0 thì lấy tất cả
+     * @return
+     */
+    public List<Dish> getDishInShop(int shopId, int number){
+        List<Dish> lstDish = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor;
+        if(number<=0){
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_DISH + " WHERE shopId = ?", new String[]{shopId+""});
+        }
+        else{
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_DISH + " WHERE shopId = ? ORDER BY ROWID ASC LIMIT "+number, new String[]{shopId+""});
+        }
+        if (cursor.moveToFirst()) {
+            do {
+                Dish d = new Dish(
+                        cursor.getInt(0),
+                        cursor.getInt(1),
+                        cursor.getInt(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getInt(5),
+                        cursor.getString(6)
+                );
+                lstDish.add(d);
+            } while (cursor.moveToNext());
+        }
+        return lstDish;
     }
 }

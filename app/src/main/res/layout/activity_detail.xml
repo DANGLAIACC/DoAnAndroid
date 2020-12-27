@@ -158,7 +158,7 @@
 
 
     <ListView
-        android:id="@+id/lvBestSeller"
+        android:id="@+id/lvDetail"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
