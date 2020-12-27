@@ -2,9 +2,16 @@ package com.dql.doanandroid.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.widget.Toast;
+
+import com.dql.doanandroid.model.Shop;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "SearchFood";
@@ -218,5 +225,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVALUATE);
         onCreate(db);
 
+    }
+
+    public List<Shop> getAllShop(){
+        List<Shop> lstShop = new ArrayList<>();
+        String qry = "select * from "+TABLE_SHOP;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor= db.rawQuery(qry, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Shop s = new Shop(
+                        cursor.getInt(0),
+                        cursor.getInt(5),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4)
+                );
+                lstShop.add(s);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return lstShop;
     }
 }

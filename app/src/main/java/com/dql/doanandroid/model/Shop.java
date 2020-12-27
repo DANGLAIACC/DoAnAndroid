@@ -1,15 +1,29 @@
 package com.dql.doanandroid.model;
 
 public class Shop {
-
+    /**
+     * Dùng cho phương thức khởi tạo database ExampleDatabase
+     */
     public Shop(int shopTypeId, String shopName, String shopAddress, String shopArticle, String shopImg) {
-        shopTypeId = 0;
         this.shopTypeId = shopTypeId;
         this.shopName = shopName;
         this.shopAddress = shopAddress;
         this.shopArticle = shopArticle;
         this.shopImg = shopImg;
     }
+
+    /**
+     * Dùng khi khởi tạo đối tượng từ database có sẵn databasehelper
+     */
+    public Shop(int shopId, int shopTypeId, String shopName, String shopAddress, String shopArticle, String shopImg) {
+        this.shopId = shopId;
+        this.shopTypeId = shopTypeId;
+        this.shopName = shopName;
+        this.shopAddress = shopAddress;
+        this.shopArticle = shopArticle;
+        this.shopImg = shopImg;
+    }
+    public void setShopId(int id){this.shopId = id;}
     // img tiền tố: https://images.foody.vn/res/
     public int getShopId() {
         return shopId;
