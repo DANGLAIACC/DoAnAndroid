@@ -25,7 +25,7 @@ public class ExampleData {
         lstDish = new ArrayList<>();
         lstEvaluate = new ArrayList<>();
 
-        lstUser.add(new User("admin", "amdin", "Đặng Quốc Lai", "Thủ Đức", 1));
+        lstUser.add(new User("admin", "admin", "Đặng Quốc Lai", "Thủ Đức", 1));
         lstUser.add(new User("vtluan", "vtluan", "Văn Tiến Luận", "Thủ Đức", 1));
         lstUser.add(new User("dtthien", "dtthien", "Đặng Trần Thanh Hiền", "Quận 2", 0));
         lstUser.add(new User("dttha", "dttha", "Đặng Trần Thanh Hà", "Bình Thạnh", 0));

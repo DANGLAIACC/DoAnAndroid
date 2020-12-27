@@ -5,12 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.Editable;
 import android.widget.Toast;
 
-import com.dql.doanandroid.AllEvaluate;
 import com.dql.doanandroid.model.Dish;
 import com.dql.doanandroid.model.Evaluate;
 import com.dql.doanandroid.model.Shop;
+import com.dql.doanandroid.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -249,14 +250,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         db.close();
+        close(db, cursor);
         return lstShop;
     }
 
     public Shop getShopById(int id) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_SHOP + " WHERE shopId = ?", new String[]{id+""});
-//        System.err.println("line DatabaseHelper.java:265: Nhận được shopId = "+id);
-
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_SHOP + " WHERE shopId = ?", new String[]{id + ""});
         if (cursor.moveToFirst()) {
             Shop s = new Shop(
                     cursor.getInt(0),
@@ -268,29 +268,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
 
 //            System.err.println("line DatabaseHelper.java:265: Tồn tại shopId = "+id);
+            close(db, cursor);
             return s;
+        } else {
+            Toast.makeText(context, "Không tồn tại shopId = " + id, Toast.LENGTH_SHORT).show();
         }
-        else{
-            Toast.makeText(context, "Không tồn tại shopId = "+id, Toast.LENGTH_SHORT).show();
-        }
-        return new Shop(-1,-1, "", "", "", "");
+        close(db, cursor);
+        return new Shop(-1, -1, "", "", "", "");
     }
 
     /**
      * Lấy 1 số món ăn trong shop
+     *
      * @param shopId
      * @param number ko lớn hơn 0 thì lấy tất cả
      * @return
      */
-    public List<Dish> getDishInShop(int shopId, int number){
+    public List<Dish> getDishInShop(int shopId, int number) {
         List<Dish> lstDish = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor;
-        if(number<=0){
-            cursor = db.rawQuery("SELECT * FROM " + TABLE_DISH + " WHERE shopId = ?", new String[]{shopId+""});
-        }
-        else{
-            cursor = db.rawQuery("SELECT * FROM " + TABLE_DISH + " WHERE shopId = ? ORDER BY ROWID ASC LIMIT "+number, new String[]{shopId+""});
+        if (number <= 0) {
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_DISH + " WHERE shopId = ?", new String[]{shopId + ""});
+        } else {
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_DISH + " WHERE shopId = ? ORDER BY ROWID ASC LIMIT " + number, new String[]{shopId + ""});
         }
         if (cursor.moveToFirst()) {
             do {
@@ -306,10 +307,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 lstDish.add(d);
             } while (cursor.moveToNext());
         }
+        close(db, cursor);
         return lstDish;
     }
 
-    public List<Evaluate> getEvaluateById(String shopId){
+    public List<Evaluate> getEvaluateById(String shopId) {
         List<Evaluate> lstEvaluate = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_EVALUATE + " WHERE shopId = ?", new String[]{shopId});
@@ -328,6 +330,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 lstEvaluate.add(d);
             } while (cursor.moveToNext());
         }
+        close(db, cursor);
         return lstEvaluate;
+    }
+
+    public User login(String username, String password) {
+        String qry = String.format("select * from %s where %s = ? and %s = ?",TABLE_USER,USRUSR,USRPWD);
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(qry, new String[]{username, password});
+        if (cursor.moveToFirst()) {
+            User u = new User(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getInt(4)
+            );
+            close(db, cursor);
+            return u;
+        }
+        close(db, cursor);
+        return null;
+    }
+
+    private void close(SQLiteDatabase s, Cursor c) {
+        c.close();
+        s.close();
     }
 }
