@@ -16,11 +16,6 @@ import com.dql.doanandroid.R;
 import com.dql.doanandroid.global.GetImageFromUrl;
 import com.dql.doanandroid.model.Shop;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.List;
 
 public class ShopAdapter extends ArrayAdapter<Shop> {

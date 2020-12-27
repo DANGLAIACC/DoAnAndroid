@@ -65,6 +65,10 @@ public class Shop {
     private int shopId, shopTypeId;
     private String shopName, shopAddress, shopArticle, shopImg;
 
+    @Override
+    public String toString() {
+        return "shop.Tostring: "+shopName;
+    }
 }
 /*
         content.put("shopTypeId",i.getShopTypeId);

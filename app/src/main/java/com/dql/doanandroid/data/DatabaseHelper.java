@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.widget.Toast;
 
 import com.dql.doanandroid.model.Shop;
@@ -158,7 +157,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 content.put(SHOPNAME, i.getShopName());
                 content.put(SHOPADDRESS, i.getShopAddress());
                 content.put(SHOPARTICLE, i.getShopArticle());
-                content.put(SHOPIMG , i.getShopImg());
+                content.put(SHOPIMG, i.getShopImg());
                 db.insert(TABLE_SHOP, null, content);
             });
         } catch (Exception ex) {
@@ -227,11 +226,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public List<Shop> getAllShop(){
+    public List<Shop> getAllShop() {
         List<Shop> lstShop = new ArrayList<>();
-        String qry = "select * from "+TABLE_SHOP;
+        String qry = "select * from " + TABLE_SHOP;
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor= db.rawQuery(qry, null);
+        Cursor cursor = db.rawQuery(qry, null);
         if (cursor.moveToFirst()) {
             do {
                 Shop s = new Shop(
@@ -248,5 +247,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return lstShop;
+    }
+
+    public Shop getShopById(int id) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_SHOP + " WHERE shopId = ?", new String[]{id+""});
+//        System.err.println("line DatabaseHelper.java:265: Nhận được shopId = "+id);
+
+        if (cursor.moveToFirst()) {
+            Shop s = new Shop(
+                    cursor.getInt(0),
+                    cursor.getInt(5),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4)
+            );
+
+//            System.err.println("line DatabaseHelper.java:265: Tồn tại shopId = "+id);
+            return s;
+        }
+        else{
+            Toast.makeText(context, "Không tồn tại shopId = "+id, Toast.LENGTH_SHORT).show();
+        }
+        return new Shop(-1, "", "", "", "");
     }
 }

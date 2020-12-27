@@ -8,9 +8,9 @@
     tools:context=".Detail">
 
     <ImageView
-        android:id="@+id/imgDetail"
+        android:id="@+id/detailImg"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="240dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:contentDescription="@string/img_decription"
@@ -20,24 +20,26 @@
         app:srcCompat="@drawable/dish_detail" />
 
     <ImageView
+        android:id="@+id/img2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
-        android:contentDescription="@string/img_decription"
-
         android:adjustViewBounds="true"
         android:background="@drawable/vector_11"
-        app:layout_constraintStart_toStartOf="@id/imgDetail"
-        app:layout_constraintTop_toTopOf="@id/imgDetail" />
+        android:contentDescription="@string/img_decription"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/detailImg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24" />
 
     <TextView
-        android:id="@+id/dishName"
+        android:id="@+id/detailShopName"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
         android:text="3 Con ga"
+        android:layout_marginTop="60dp"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@id/imgDetail"
+        app:layout_constraintTop_toTopOf="@id/img2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -50,11 +52,11 @@
         android:src="@drawable/ic_star"
         android:contentDescription="@string/img_decription"
 
-        app:layout_constraintStart_toStartOf="@id/dishName"
-        app:layout_constraintTop_toBottomOf="@id/dishName" />
+        app:layout_constraintStart_toStartOf="@id/detailShopName"
+        app:layout_constraintTop_toBottomOf="@id/detailShopName" />
 
     <TextView
-        android:id="@+id/rateStar"
+        android:id="@+id/detailRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -71,44 +73,46 @@
         android:contentDescription="@string/img_decription"
 
         android:src="@drawable/ic_comment"
-        app:layout_constraintBottom_toBottomOf="@id/rateStar"
-        app:layout_constraintStart_toEndOf="@id/rateStar"
-        app:layout_constraintTop_toTopOf="@id/rateStar" />
+        app:layout_constraintBottom_toBottomOf="@id/detailRate"
+        app:layout_constraintStart_toEndOf="@id/detailRate"
+        app:layout_constraintTop_toTopOf="@id/detailRate" />
 
     <TextView
+        android:id="@+id/detailCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text="15"
-        app:layout_constraintBottom_toBottomOf="@id/rateStar"
+        app:layout_constraintBottom_toBottomOf="@id/detailRate"
         app:layout_constraintStart_toEndOf="@id/imgCmt"
-        app:layout_constraintTop_toTopOf="@id/rateStar" />
+        app:layout_constraintTop_toTopOf="@id/detailRate" />
 
     <TextView
-        android:id="@+id/detail_article"
+        android:id="@+id/detailArticle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/detail.article"
-        app:layout_constraintEnd_toEndOf="@id/dishName"
-        app:layout_constraintStart_toStartOf="@id/dishName"
+        app:layout_constraintEnd_toEndOf="@id/detailShopName"
+        app:layout_constraintStart_toStartOf="@id/detailShopName"
         app:layout_constraintTop_toBottomOf="@id/star" />
 
     <TextView
         android:id="@+id/lbldishMenu"
         style="@style/detail_lblTitle"
         android:text="@string/detail.shopMenu"
-        app:layout_constraintStart_toStartOf="@+id/detail_article"
-        app:layout_constraintTop_toBottomOf="@id/detail_article" />
+        app:layout_constraintStart_toStartOf="@+id/detailArticle"
+        app:layout_constraintTop_toBottomOf="@id/detailArticle" />
 
     <TextView
+        android:id="@+id/allMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/detail.allMenu"
         app:layout_constraintTop_toTopOf="@id/lbldishMenu"
         app:layout_constraintBottom_toBottomOf="@id/lbldishMenu"
         app:layout_constraintStart_toEndOf="@id/lbldishMenu"
-        app:layout_constraintEnd_toEndOf="@id/dishName"
+        app:layout_constraintEnd_toEndOf="@id/detailShopName"
         android:textAlignment="textEnd"/>
 
     <Button
@@ -149,17 +153,18 @@
         android:id="@+id/lblBtnText"
         style="@style/detail_lblTitle"
         android:text="@string/detail.btnBest"
-        app:layout_constraintStart_toStartOf="@+id/detail_article"
+        app:layout_constraintStart_toStartOf="@+id/detailArticle"
         app:layout_constraintTop_toBottomOf="@id/btnBestSeller" />
 
 
     <ListView
+        android:id="@+id/lvBestSeller"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="@id/dishName"
-        app:layout_constraintEnd_toEndOf="@id/dishName"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/detailShopName"
+        app:layout_constraintStart_toStartOf="@id/detailShopName"
         app:layout_constraintTop_toBottomOf="@id/lblBtnText">
 
     </ListView>
