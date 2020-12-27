@@ -32,7 +32,7 @@ public class ShopAdapter extends ArrayAdapter<Shop> {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.shop_item, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_shop, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.dishImgContent = convertView.findViewById(R.id.dishImgContent);
             viewHolder.dishName = convertView.findViewById(R.id.dishName);
@@ -52,7 +52,7 @@ public class ShopAdapter extends ArrayAdapter<Shop> {
 //        return super.getView(position, convertView,parent);
         return convertView;
     }
-    public class ViewHolder {
+    private class ViewHolder {
         private ImageView dishImgContent;
         private TextView dishName, dishPrice, dishArticle;
 

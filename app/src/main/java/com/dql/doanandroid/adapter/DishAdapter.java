@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.dql.doanandroid.R;
 import com.dql.doanandroid.global.GetImageFromUrl;
 import com.dql.doanandroid.model.Dish;
-import com.dql.doanandroid.model.Shop;
 
 import java.util.List;
 
@@ -33,7 +32,7 @@ public class DishAdapter extends ArrayAdapter<Dish> {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.shop_item, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_shop, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.dishImgContent = convertView.findViewById(R.id.dishImgContent);
             viewHolder.dishName = convertView.findViewById(R.id.dishName);

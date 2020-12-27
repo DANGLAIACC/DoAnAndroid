@@ -13,4 +13,6 @@
     <color name="lightgray">#F6F6F6</color>
     <color name="darkgray">#838383</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="green">#03ae03</color>
+
 </resources>

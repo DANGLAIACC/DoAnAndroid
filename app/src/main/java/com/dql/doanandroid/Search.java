@@ -53,7 +53,7 @@ public class Search extends AppCompatActivity {
 
     private void setAdapter() {
         if (shopAdapter == null) {
-            shopAdapter = new ShopAdapter(this, R.layout.shop_item, lstShop);
+            shopAdapter = new ShopAdapter(this, R.layout.item_shop, lstShop);
         }
         lvSearchResult.setAdapter(shopAdapter);
     }

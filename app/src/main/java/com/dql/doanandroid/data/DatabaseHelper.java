@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import com.dql.doanandroid.AllEvaluate;
 import com.dql.doanandroid.model.Dish;
+import com.dql.doanandroid.model.Evaluate;
 import com.dql.doanandroid.model.Shop;
 
 import java.util.ArrayList;
@@ -305,5 +307,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return lstDish;
+    }
+
+    public List<Evaluate> getEvaluateById(String shopId){
+        List<Evaluate> lstEvaluate = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_EVALUATE + " WHERE shopId = ?", new String[]{shopId});
+        if (cursor.moveToFirst()) {
+            do {
+                Evaluate d = new Evaluate(
+                        cursor.getInt(0),
+                        cursor.getInt(1),
+                        cursor.getInt(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getString(6),
+                        cursor.getString(7)
+                );
+                lstEvaluate.add(d);
+            } while (cursor.moveToNext());
+        }
+        return lstEvaluate;
     }
 }

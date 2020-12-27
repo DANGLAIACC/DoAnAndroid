@@ -1,6 +1,9 @@
 package com.dql.doanandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -25,7 +28,7 @@ public class Detail extends AppCompatActivity {
 
     private ImageView detailImg;
 
-    private TextView detailShopName, detailRate, detailCount, detailArticle, allMenu;
+    private TextView detailShopName, detailRate, detailCount, detailArticle, allMenu, detailAllEvaluate;
     private Button btnBestSeller, btnNonVeg, btnDrink, btnVeg;
     private ListView lvDetail;
 
@@ -40,8 +43,22 @@ public class Detail extends AppCompatActivity {
 
         getViewById();
         initWidget();
+        addEvent();
         Toast.makeText(this, shop.getShopName(), Toast.LENGTH_SHORT).show();
     }
+
+    private void addEvent() {
+        detailAllEvaluate.setOnClickListener(detailAllEvaluate_click);
+    }
+
+    private OnClickListener detailAllEvaluate_click = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getBaseContext(), AllEvaluate.class);
+            intent.putExtra("shopId", shop.getShopId() + "");
+            startActivity(intent);
+        }
+    };
 
     private void getViewById() {
         detailImg = findViewById(R.id.detailImg);
@@ -50,6 +67,7 @@ public class Detail extends AppCompatActivity {
         detailCount = findViewById(R.id.detailCount);
         detailArticle = findViewById(R.id.detailArticle);
 
+        detailAllEvaluate = findViewById(R.id.detailAllEvaluate);
         allMenu = findViewById(R.id.allMenu);
 
         btnBestSeller = findViewById(R.id.btnBestSeller);
@@ -69,23 +87,11 @@ public class Detail extends AppCompatActivity {
             db = new DatabaseHelper(this);
             List<Dish> lstDish = db.getDishInShop(shop.getShopId(), 0);
 //            System.err.println("line Detail.java:70 - lstDish.size(): " + lstDish.size());
-            dishAdapter = new DishAdapter(this, R.layout.shop_item, lstDish);
+            dishAdapter = new DishAdapter(this, R.layout.item_shop, lstDish);
             lvDetail.setAdapter(dishAdapter);
         } catch (Exception e) {
             System.err.println("line Detail.java:77 - e.getMessage(): " + e.getMessage());
         }
     }
 
-
-//    private void initListViewDetail() {
-//        try {
-//        System.err.println("line Detail.java:70 - lstDish.size(): " + lstDish.size());
-//
-//            DishAdapter dishAdapter = new DishAdapter(this, R.layout.dish_item, lstDish);
-//            lvDetail.setAdapter(dishAdapter);
-//        }catch (Exception e)
-//        {
-//            System.err.println("line Detail.java:79 - e.getMessage(): "+e.getMessage());
-//        }
-//    }
 }
