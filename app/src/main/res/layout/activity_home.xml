@@ -207,7 +207,7 @@
         app:layout_constraintStart_toStartOf="@id/foodImg"
         app:layout_constraintEnd_toEndOf="@id/foodImg"
         app:layout_constraintTop_toBottomOf="@id/foodImg"
-        android:text="@string/home.foodname"
+        android:text="@string/home.dishname"
         android:fontFamily="@font/roboto_bold"
         android:layout_marginTop="5dp"
         />

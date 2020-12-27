@@ -65,14 +65,12 @@ public class Detail extends AppCompatActivity {
                 .execute("https://images.foody.vn/res/" + shop.getShopImg());
         detailShopName.setText(shop.getShopName());
         detailArticle.setText(shop.getShopArticle());
-        db = new DatabaseHelper(this);
         try {
+            db = new DatabaseHelper(this);
             List<Dish> lstDish = db.getDishInShop(shop.getShopId(), 0);
-            System.err.println("line Detail.java:70 - lstDish.size(): " + lstDish.size());
-
+//            System.err.println("line Detail.java:70 - lstDish.size(): " + lstDish.size());
             dishAdapter = new DishAdapter(this, R.layout.shop_item, lstDish);
             lvDetail.setAdapter(dishAdapter);
-
         } catch (Exception e) {
             System.err.println("line Detail.java:77 - e.getMessage(): " + e.getMessage());
         }
