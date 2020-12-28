@@ -14,10 +14,11 @@
         <activity android:name=".AllEvaluate" />
         <activity android:name=".Search" />
         <activity android:name=".Detail" />
-        <activity android:name=".Home"/>
-        <activity android:name=".Login" >
+        <activity android:name=".Home" />
+        <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
