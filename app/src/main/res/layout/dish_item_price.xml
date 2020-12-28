@@ -15,6 +15,7 @@
         app:cardCornerRadius="15dp"
         >
         <ImageView
+            android:id="@+id/dishImgContent"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:contentDescription="@string/img_decription"

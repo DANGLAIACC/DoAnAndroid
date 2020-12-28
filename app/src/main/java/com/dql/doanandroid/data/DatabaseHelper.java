@@ -107,7 +107,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-//        db = this.getWritableDatabase();
         db.execSQL(qryCreateTblDishType);
         db.execSQL(qryCreateTblShopType);
         db.execSQL(qryCreateTblShop);
@@ -227,7 +226,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVALUATE);
         onCreate(db);
+    }
 
+    public List<Shop> getNearestShop(String location) {
+        List<Shop> lstShop = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor;
+        try {
+            String qry = String.format("select * from %s where %s like %s or %s like %s",
+                    TABLE_SHOP,
+                    SHOPNAME,
+                    "'%"+location.trim()+"%'",
+                    SHOPADDRESS,
+                    "'%"+location.trim()+"%'"
+            );
+//            System.err.println("line DatabaseHelper.java:247 - qry: "+qry);
+            cursor = db.rawQuery(qry, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    Shop s = new Shop(
+                            cursor.getInt(0),
+                            cursor.getInt(5),
+                            cursor.getString(1),
+                            cursor.getString(2),
+                            cursor.getString(3),
+                            cursor.getString(4)
+                    );
+                    lstShop.add(s);
+                } while (cursor.moveToNext());
+            }
+//            System.err.println("line DatabaseHelper.java:263 - lstShop.size(): "+lstShop.size());
+            close(db, cursor);
+        } catch (Exception e) {
+            System.err.println("line DatabaseHelper.java:265 - e.getMessage(): "+e.getMessage());
+        }
+        return lstShop;
     }
 
     public List<Shop> getAllShop() {
@@ -248,8 +282,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 lstShop.add(s);
             } while (cursor.moveToNext());
         }
-        cursor.close();
-        db.close();
         close(db, cursor);
         return lstShop;
     }
@@ -335,7 +367,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public User login(String username, String password) {
-        String qry = String.format("select * from %s where %s = ? and %s = ?",TABLE_USER,USRUSR,USRPWD);
+        String qry = String.format("select * from %s where %s = ? and %s = ?", TABLE_USER, USRUSR, USRPWD);
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(qry, new String[]{username, password});
         if (cursor.moveToFirst()) {

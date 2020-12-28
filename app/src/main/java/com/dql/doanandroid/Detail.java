@@ -2,6 +2,7 @@ package com.dql.doanandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -79,8 +80,12 @@ public class Detail extends AppCompatActivity {
     }
 
     private void initWidget() {
+        String strUrl = shop.getShopImg();
+        if (!strUrl.startsWith("https://")) {
+            strUrl = "https://images.foody.vn/res/" + strUrl;
+        }
         new GetImageFromUrl(detailImg)
-                .execute("https://images.foody.vn/res/" + shop.getShopImg());
+                .execute(strUrl);
         detailShopName.setText(shop.getShopName());
         detailArticle.setText(shop.getShopArticle());
         try {

@@ -21,7 +21,7 @@ public class GetImageFromUrl extends AsyncTask<String, Void, Bitmap> {
             InputStream in = new java.net.URL(urldisplay).openStream();
             mIcon11 = BitmapFactory.decodeStream(in);
         } catch (Exception e) {
-            System.err.println("line ShopAdapter.java:77 - e.getMessage(): " + e.getMessage());
+            System.err.println("line GetImageFromUrl.java:24 - e.getMessage(): "+e.getMessage());
             e.printStackTrace();
         }
         return mIcon11;
