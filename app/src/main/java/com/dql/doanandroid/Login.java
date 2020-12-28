@@ -48,6 +48,7 @@ public class Login extends AppCompatActivity {
             if(u!=null){
                 Intent intent = new Intent(getBaseContext(), Home.class);
                 startActivity(intent);
+                finish();
             }
             else{
                 Toast.makeText(Login.this, "Thông tin đăng nhập sai.", Toast.LENGTH_SHORT).show();
